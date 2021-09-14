@@ -1,2 +1,2 @@
-void display_terminal_names();
-void display_current_dir();
+void display_shell_names_dir();
+// void display_current_dir();
