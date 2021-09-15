@@ -81,3 +81,20 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
         }
     }
 }
+
+void built_in_commands_echo(char **inside_token, int k)
+{
+    for (int i = 1; i < k;i++)
+    {
+        printf("%s", inside_token[i]);
+        if(i!=(k-1))
+            printf(" ");
+    }
+    printf("\n");
+}
+
+void built_in_commands_pwd()
+{
+    char pwd_by_cwd[1000];
+    printf("%s\n",getcwd(pwd_by_cwd,sizeof(pwd_by_cwd)));
+}

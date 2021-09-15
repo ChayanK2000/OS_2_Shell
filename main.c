@@ -20,8 +20,8 @@ int main()
         inp_flag = take_input();
         if (inp_flag == -1)
             break;
+        fflush(stdout);
     }
-
 
     return 0;
 }

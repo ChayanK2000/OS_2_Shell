@@ -47,6 +47,16 @@ int take_input()
             {
                 built_in_commands_cd(inside_token,i);
             }
+
+            else if (strcmp(inside_token[0], "echo") == 0)
+            {
+                built_in_commands_echo(inside_token, i);//no need of whole command and i...just send the argument
+            }
+
+            else if (strcmp(inside_token[0], "pwd") == 0)
+            {
+                built_in_commands_pwd();
+            }
         }
     }
     return 0;
