@@ -1,13 +1,10 @@
 #include "ls.h"
 #include "input.h"
-void get_ls_info(char **inside_token, int k) //k is the no of rows - the no of segmented words
+void get_ls_info(char **inside_token, int k) //k is the no of rows ,i.e, the no of segmented words
 {
-    // char *all_ls_paths = (char *)malloc(1000 * sizeof(char));
-    // all_ls_paths = "";
     char space = ' ';
     char *ls_path = (char *)malloc(1000 * sizeof(char));
     int ind = -1; //index of ls_path having all arguments except the flags
-    // printf("%d\n", sizeof(inside_token));
     count = 0;
     int ls_a_flag = 0, ls_l_flag = 0;
     int dir_mention = 0;
@@ -76,7 +73,7 @@ void get_ls_info(char **inside_token, int k) //k is the no of rows - the no of s
             // strcat(all_ls_paths, ls_path);
             // strncat(all_ls_paths, &space, 1);
 
-            //Update even the above was not required. Converted the ls_path itself to the long string having all path to directories mentioned.
+            //Update: even the above was not required. Converted the ls_path itself to the long string having all path to directories mentioned.
         }
     }
     if (dir_mention == 0) //case when nothing is entered for path of dir. Could also be done by just adding "./" in ls_path always beforehand
@@ -118,10 +115,13 @@ void list_files(char *ls_path, int ls_a_flag, int ls_l_flag)
             if ((dir_read->d_name)[0] == '.')
                 continue;
         }
+        // if (ls_l_flag == 1)
+        // {
+        //     display_details(dir_read->d_name);
+        // }
         printf("%s\n", dir_read->d_name);
     }
     //following if just for printing \n for d-1 times while displaying of various drectories
-
     if ((dir_count > 1) && (dir_count - count >= 1))
     {
         printf("\n");

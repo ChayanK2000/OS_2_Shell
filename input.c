@@ -1,5 +1,6 @@
 #include "input.h"
 #include "ls.h"
+#include "built_in_comm.h"
 int take_input()
 {
     char *inp;
@@ -29,8 +30,8 @@ int take_input()
         {
             if ((inside_token[i][0] != '-') && (i>=1))
             {
-                dir_count++;
-                // printf("%d\n", dir_count);
+                dir_count++; //using/writing this just for those cases where mmore than directory is given...
+                //hence we need to first write "dir name:" before listing files and exra newline at end etc etc
             }
         }
         if(strcmp(inside_token[0],"ls")==0)
@@ -39,6 +40,10 @@ int take_input()
             //This is because we cant calcualte te no of rows occupied in a 2d array in c
             
         }
+        else if (strcmp(inside_token[0],"cd") == 0)
+        {
+            built_in_commands_cd(inside_token,i);
         }
+    }
     return 0;
 }

@@ -21,11 +21,11 @@ void display_shell_names_dir()
     // {
     //     printf("~");
     // }
-    int len_of_home_dir = strlen(cur_home);
+    // int len_of_home_dir = strlen(cur_home); //not reqd as already there in main.c,main.h
     int len_of_cur_dir = strlen(cur_dir);
     int flag_for_home = 1;
     int i;
-    for (i = 0; i < len_of_home_dir; i++) //using length of home dir...so that say home=/home/c and cur = /home/c/a1/b1/c1/d1...so wo /jome/c ke liye toh '~' print karega hi
+    for (i = 0; i < len_home; i++) //using length of home dir...so that say home=/home/c and cur = /home/c/a1/b1/c1/d1...so wo /jome/c ke liye toh '~' print karega hi
     {
         if (cur_home[i] != cur_dir[i])
         {
