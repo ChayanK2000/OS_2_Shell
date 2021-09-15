@@ -1,5 +1,5 @@
 .vscode/
-./yo/*
-./bo/
-./try.c
-./a.out
+.yo/*
+.bo/
+.try.c
+a.out
