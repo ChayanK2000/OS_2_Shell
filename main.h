@@ -7,3 +7,4 @@
 typedef long long ll;
 char cur_home[1000];
 int len_home;
+int cd_count;
