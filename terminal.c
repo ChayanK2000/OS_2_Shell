@@ -1,6 +1,6 @@
 // #include <sys/utsname.h> //for using command "uname"...not necessary as it gave output as "Linux"
 #include "terminal.h"
-#include "main.h" //for getting cur_home_dir, all common libraries
+// #include "main.h" //for getting cur_home_dir, all common libraries
 
 void display_shell_names_dir()
 {
