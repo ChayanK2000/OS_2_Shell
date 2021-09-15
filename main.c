@@ -8,6 +8,7 @@ int main()
     printf("****************************************************************************\n");
 
     getcwd(cur_home, sizeof(cur_home)); // has to be more than the exact length of the string...so sizeof(the original number put while declaring = 1000 is best option)
+    len_home = strlen(cur_home);
     int inp_flag = 0;
     while (1)
     {

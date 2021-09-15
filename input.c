@@ -24,20 +24,20 @@ int take_input()
             inside_token[i] = (char *)calloc(1000, sizeof(char));
         }
         int i = -1;
-        int ls_flag = 0;
+        dir_count = 0;
         while ((inside_token[++i] = strtok_r(token, delimit, &token)))
         {
-            if (strcmp(inside_token[0],"ls")==0)
+            if ((inside_token[i][0] != '-') && (i>=1))
             {
-                ls_flag = 1;
+                dir_count++;
+                // printf("%d\n", dir_count);
             }
-
         }
-        if(ls_flag == 1)
+        if(strcmp(inside_token[0],"ls")==0)
         {
             get_ls_info(inside_token,i); //sending the value of 'i' which is basically no of segmented words.
             //This is because we cant calcualte te no of rows occupied in a 2d array in c
-            ls_flag = 0;
+            
         }
         }
     return 0;
