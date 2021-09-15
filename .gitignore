@@ -1,5 +1,5 @@
 .vscode/
-yo/*
+./yo/*
 bo/
 try.c
 a.out
