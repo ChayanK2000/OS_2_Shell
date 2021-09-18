@@ -35,7 +35,7 @@ int take_input()
                 //hence we need to first write "dir name:" before listing files and exra newline at end etc etc
             }
         }
-        if(check_of_while_of_spaces==1)
+        if (check_of_while_of_spaces == 1) // to avoid the cases like ls dir1 ; ;   ;cd xyz, and as mentined above beside declaration
         {
             if (strcmp(inside_token[0], "ls") == 0)
             {
@@ -53,10 +53,14 @@ int take_input()
                 built_in_commands_echo(inside_token, i);//no need of whole command and i...just send the argument
             }
 
-            else if (strcmp(inside_token[0], "pwd") == 0)
+            else if (strcmp(inside_token[0], "pwd") == 0)//because in normal terminal as well...it doent matter what is there after pwd..if pwd present then it just gives the pwd.
             {
                 built_in_commands_pwd();
             }
+            // else
+            // {
+            //     sys_commands(inside_token, i);
+            // }
         }
     }
     return 0;
