@@ -7,7 +7,7 @@ int main()
     cd_count = 0;
     printf("Welcome to this personal shell!!\n");
     printf("****************************************************************************\n");
-
+    
     getcwd(cur_home, sizeof(cur_home)); // has to be more than the exact length of the string...so sizeof(the original number put while declaring = 1000 is best option)
     len_home = strlen(cur_home);
     

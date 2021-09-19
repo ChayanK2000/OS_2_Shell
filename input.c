@@ -1,6 +1,8 @@
 #include "input.h"
 #include "ls.h"
 #include "built_in_comm.h"
+#include "sys_commands.h"
+#include "pinfo.h"
 int take_input()
 {
     char *inp;
@@ -35,6 +37,8 @@ int take_input()
                 //hence we need to first write "dir name:" before listing files and exra newline at end etc etc
             }
         }
+
+        /////////
         if (check_of_while_of_spaces == 1) // to avoid the cases like ls dir1 ; ;   ;cd xyz, and as mentined above beside declaration
         {
             if (strcmp(inside_token[0], "ls") == 0)
@@ -57,10 +61,14 @@ int take_input()
             {
                 built_in_commands_pwd();
             }
-            // else
-            // {
-            //     sys_commands(inside_token, i);
-            // }
+            else if(strcmp(inside_token[0],"pinfo") == 0)
+            {
+                apply_pinfo(inside_token, i);
+            }
+            else
+            {
+                sys_commands(inside_token, i);
+            }
         }
     }
     return 0;

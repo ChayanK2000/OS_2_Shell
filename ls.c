@@ -135,7 +135,11 @@ void list_files(char *each_ls_path, int ls_a_flag, int ls_l_flag)
             ll blks = display_details(file_name);
             sum_1st_line += blks;
         }
-        printf("%s %d\n", dir_read->d_name, sum_1st_line);
+        printf("%s\n", dir_read->d_name);//ths sum_1st_line just aese hi...coz to do hai ki this total sum / 2 = th first line which we see in ls -l
+    }
+    if(ls_l_flag == 1)
+    {
+        printf("total %lld\n", sum_1st_line/2);
     }
     //following if just for printing \n for d-1 times while displaying of various drectories
     if ((dir_count > 1) && (dir_count - count >= 1))
@@ -153,7 +157,7 @@ ll display_details( char *xyz)
         perror("GONE");
         exit(1);
     }
-    struct tm dt;
+    // struct tm dt;
     printf((S_ISDIR(buff.st_mode)) ? "d" : "");
     printf((S_ISREG(buff.st_mode)) ? "-" : "");
     printf((S_ISLNK(buff.st_mode)) ? "l" : "");

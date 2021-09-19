@@ -20,7 +20,7 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
         printf("Too many arguments for cd command!\n");
         // exit(1);
     }
-    else if(strcmp(inside_token[1],"-")==0)
+    else if(strcmp(inside_token[1],"-")==0) //beter to take this whole in the else part logically, though no harm here as well
     {   
         if (cd_count<1)
         {
