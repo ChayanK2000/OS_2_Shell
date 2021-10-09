@@ -5,3 +5,5 @@ yo/
 bo/
 do/
 temp*
+*.o
+shell

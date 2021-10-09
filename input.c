@@ -1,7 +1,28 @@
 #include "input.h"
 #include "command.h"
 #include "piping.h"
+void loopy_func_for_args(char *inp)
+{
+    char *token;
+    //strtok gives issue if called again afterwards for same variable...hence usng strtok_r
+    while ((token = strtok_r(inp, ";", &inp)))
+    {
+        int no_of_pipes_direct = 0;
+        for (int j = 0; j < strlen(token); j++)
+        {
 
+            if ((token[j] == '|') || (token[j] == '<') || (token[j] == '>'))
+                no_of_pipes_direct++;
+        }
+        if (no_of_pipes_direct > 0)
+        {
+            pipe_func(token);
+            continue; //necessary as when its not there, the pipe arg would have already been executed and
+            //again the below line calling tok_by_delim would be there treating the whole token as one argment(just like without piping)
+        }
+        tok_by_delim_and_execute(token);
+    }
+}
 void tok_by_delim_and_execute(char * token)
 {
     char delimit[] = " \t\r\n\v\f";   //possible whitespace chars
@@ -35,23 +56,7 @@ int take_input()
         return -1;
     }
 
-    
-    char *token;
-    //strtok gives issue if called again afterwards for same variable...hence usng strtok_r
-    while ((token = strtok_r(inp,";",&inp)))
-    {
-        int no_of_pipes = 0;
-        for (int j = 0; j < strlen(token);j++)
-        {
-            if (token[j] == '|')
-                no_of_pipes++;
-        }
-        if (no_of_pipes > 0)
-        {
-            pipe_func(token);
-            continue;
-        }
-        tok_by_delim_and_execute(token);
-    }
+    loopy_func_for_args(inp);
+
     return 0;
 }
