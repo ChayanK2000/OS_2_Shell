@@ -38,3 +38,6 @@ Also in linux, ls -l -l is totally fine giving normal ans 1 time  - handled
 2. We can have decalarations multiple times but not definitions. Like for example "main.h" is included in many files. suppose main.h has "int zz=5;" this will be a problem. instead if we do "int zz;" its fine - done
 
 3. piping and dup2 combine is hell lot confusng....wrote in the comments in .c files
+4. I observed that always the rightmost arg is taken into account in case of multiple redirections(same direction)
+So : cat <a.txt<b.txt<c.txt = cat < c.txt
+    echo 1234 > a.txt>b.txt>c.txt = echo>c.txt - with a.txt and b.txt getting erased
