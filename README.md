@@ -36,3 +36,5 @@ But if we have ls -lzzz...it shows as invalid.
 Also in linux, ls -l -l is totally fine giving normal ans 1 time  - handled
 
 2. We can have decalarations multiple times but not definitions. Like for example "main.h" is included in many files. suppose main.h has "int zz=5;" this will be a problem. instead if we do "int zz;" its fine - done
+
+3. piping and dup2 combine is hell lot confusng....wrote in the comments in .c files

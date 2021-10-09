@@ -1,5 +1,6 @@
 #include "ls.h"
 #include "input.h"
+#include "sys_commands.h"
 
 void get_ls_info(char **inside_token, int k) //k is the no of rows ,i.e, the no of segmented words
 {
@@ -33,8 +34,9 @@ void get_ls_info(char **inside_token, int k) //k is the no of rows ,i.e, the no 
                 }
                 else
                 {
-                    printf("wrong ls command flag");
-                    exit(1);
+                    printf("wrong ls command flag...Re-directing the request via execvp\n");
+                    sys_commands(inside_token, k);
+                    return;
                 }
             }
         }
@@ -84,7 +86,7 @@ void get_ls_info(char **inside_token, int k) //k is the no of rows ,i.e, the no 
             // strcat(all_ls_paths, ls_path);
             // strncat(all_ls_paths, &space, 1);
 
-            //Update: even the above was not required. Converted the ls_path itself to the long string having all path to directories mentioned.
+            //Update: even the just above 2 lines of code(now commented) was not required. Converted the ls_path itself to the long string having all path to directories mentioned.
         }
     }
     if (dir_mention == 0) //case when nothing is entered for path of dir. Could also be done by just adding "./" in ls_path always beforehand
@@ -112,7 +114,7 @@ void list_files(char *each_ls_path, int ls_a_flag, int ls_l_flag)
     if (dir_ptr == NULL)
     {
         perror("Open Dir");
-        exit(1);
+        return;
     }
     //below 2 lines just when 2 or more directories given for ls
     if (dir_count > 1)
@@ -155,7 +157,7 @@ ll display_details( char *xyz)
     if(lstat(xyz, &buff)==-1)
     {
         perror("GONE");
-        exit(1);
+        return 1;
     }
     // struct tm dt;
     printf((S_ISDIR(buff.st_mode)) ? "d" : "");

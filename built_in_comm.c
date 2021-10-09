@@ -8,7 +8,10 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
     {
         strcpy(last_working_dir, curr_working_dir);
         if (chdir(cur_home) == -1)
+        {   
             perror("Unable to go to ~");
+            return;
+        }
         else
         {
             getcwd(curr_working_dir, sizeof(curr_working_dir));
@@ -18,7 +21,7 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
     else if(k>=3)
     {
         printf("Too many arguments for cd command!\n");
-        // exit(1);
+        return;
     }
     else if(strcmp(inside_token[1],"-")==0) //beter to take this whole in the else part logically, though no harm here as well
     {   
@@ -32,7 +35,10 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
         strcpy(temp, last_working_dir);
         strcpy(last_working_dir, curr_working_dir);
         if ((chdir(temp) == -1))
+        {
             perror("Cannot go to last dir");
+            return;
+        }
         
         else
         {
@@ -73,6 +79,7 @@ void built_in_commands_cd(char **inside_token, int k) //k is the no of rows,i.e 
         if (chdir(temp_path) == -1)
         {
             perror("Cannot change directory");
+            return;
         }
         else
         {

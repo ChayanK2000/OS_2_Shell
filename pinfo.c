@@ -96,7 +96,7 @@ void apply_pinfo(char **inside_token, int k)
     strcat(exec_file, proc);
     strcat(exec_file, pid_for_ref);
     strcat(exec_file, end_exe);
-    printf("execfile is %s\n", exec_file);
+    // printf("execfile is %s\n", exec_file);
     int exe_index = readlink(exec_file, pathname, 1000);
     pathname[exe_index] = '\0';
     if(exe_index<0)
