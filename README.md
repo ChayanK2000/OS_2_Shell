@@ -41,3 +41,10 @@ Also in linux, ls -l -l is totally fine giving normal ans 1 time  - handled
 4. I observed that always the rightmost arg is taken into account in case of multiple redirections(same direction)
 So : cat <a.txt<b.txt<c.txt = cat < c.txt
     echo 1234 > a.txt>b.txt>c.txt = echo>c.txt - with a.txt and b.txt getting erased
+    But this was not told in the question to implement multiple, henceleft it half way.
+
+5. say a var insidetoken is a string or array of strings. then even if its correct that insidetoke[x] = NULL, printf("%s\n", inside_token[k]); - would give segmentation fault.
+Interestingly, adding some other strings before this value correctly prints NULL : printf("4. %s\n", inside_token[k]);
+
+6. Whenevr waiting for child, use waitpid with the particluar pid. using wait(NULL) can have drastic consequences as we are recursively forking in some cases and using  wait(NULL) can be disasterous. Details witten in sys_commands.c as comments. - still cat a.txt & not working prperly !! iDK why!!
+EDIT: Even in terminal it behaves wierdly. This consumed hell lot of time for no reason!

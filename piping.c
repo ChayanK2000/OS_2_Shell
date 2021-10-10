@@ -135,7 +135,8 @@ void pipe_func(char *token)
             // close(fd_1[1]);
             // close(fd_2[0]);
             // close(fd_2[1]);
-            wait(NULL);
+            int status;
+            waitpid(fork_pid,&status,WUNTRACED);
         }
     }
 }

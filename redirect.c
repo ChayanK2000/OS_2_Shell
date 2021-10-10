@@ -5,10 +5,13 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
 {
     char *output_file = (char *)malloc(100);
     char *input_file = (char *)malloc(100);
-    char *token1 = (char *)malloc(100);
-    char *token2 = (char *)malloc(100);
+    char *token1 = (char *)malloc(100);//future use while tokenizing using '<'
+    char *token2 = (char *)malloc(100);//future use while tokenizing using '>'
     strcpy(token1, token);
     strcpy(token2, token);
+    
+    // the below code may be redundant as we can retrieve the first arg by redir_in_args as well as redir_out_args
+    //still doing for cases when command start like: <>hfhnln or ><beufbbjbu etc etc. 
     char **redir_args = (char **)malloc(40 * sizeof(char *));
     for (int i = 0; i < 40; i++)
     {
@@ -20,6 +23,7 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
     while ((redir_args[++ii] = strtok_r(token, temp, &token)))
     {
     }
+
     // printf("%s\n", redir_args[0]);
     if ((no_of_redirect_out_append > 0) || (no_of_redirect_out > 0))
     {
@@ -97,6 +101,10 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
 
     }
     else
-        wait(NULL);
+    {
+        int status;
+        waitpid(fork_redir, &status, WUNTRACED);
+    }
+    
 
 }

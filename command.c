@@ -6,6 +6,8 @@
 
 void check_for_appropriate_command(char **inside_token, int i)
 {
+    // printf("2. %s\n", inside_token[i]);
+    
     if (strcmp(inside_token[0], "ls") == 0)
     {
         dir_count = 0;

@@ -69,11 +69,12 @@ void tok_by_delim_and_execute(char *token)
         inside_token[i] = (char *)calloc(1000, sizeof(char));
     }
     int i = -1;
-    while ((inside_token[++i] = strtok_r(token, delimit, &token)))
+    while ((inside_token[++i] = strtok_r(token, delimit, &token))) //this kindof code automtically adds null at the end
     {
         check_of_while_of_spaces = 1;
     }
-
+    // printf("1. %s\n", inside_token[i]);
+    
     if (check_of_while_of_spaces == 1) // to avoid the cases like ls dir1 ; ;   ;cd xyz, and as mentined above beside declaration
     {
         check_for_appropriate_command(inside_token, i);
