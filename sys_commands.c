@@ -34,11 +34,12 @@ void sys_commands(char **inside_token, int k)
 
     if(fork_return == 0)// We enter in child process.
     {
-    
+
+        // printf("in child %d\n", getpid());
         if (background == 1)
         {
 
-            // setpgid(0, 0);
+            setpgid(0, 0);
             // // close(STDIN_FILENO);
             // // close(STDOUT_FILENO);
             // close(STDERR_FILENO);
@@ -62,7 +63,8 @@ void sys_commands(char **inside_token, int k)
         //even if we are not returing -1 as stated above, its a good practice to exit here
     }
     else //we are in parent process.
-    {   
+    {
+        // printf("parent is %d child is %d\n", getpid(),fork_return);
         if (background == 0)
         {
             // printf("hi there\n");
@@ -83,6 +85,7 @@ void sys_commands(char **inside_token, int k)
             
             printf("%d\n", fork_return);
             background_pids[no_of_backgroundprocess] = fork_return;
+            background_processes[no_of_backgroundprocess] = inside_token_amp[0];
             no_of_backgroundprocess++;
         }
     }
