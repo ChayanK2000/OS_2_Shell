@@ -17,4 +17,7 @@ int cd_count;
 int background_pids[200];
 char **background_processes;
 int no_of_backgroundprocess;
+int foreground_pids[200];
+char **foreground_processes;
+int no_of_foregroundprocess;
 int fg_pid;

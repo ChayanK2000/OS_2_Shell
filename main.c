@@ -7,11 +7,13 @@
 int main()
 {
     signal(SIGINT, signal_CtrlC);
+    signal(SIGTSTP, signal_CtrlZ);
 
     no_of_backgroundprocess = 0;
-    background_processes = (char **)malloc(2000 * sizeof(char **));
+    no_of_foregroundprocess = 0;
+    background_processes = (char **)malloc(200 * sizeof(char **));
+    foreground_processes = (char **)malloc(200 * sizeof(char **));
 
-    
     cd_count = 0;
     printf("Welcome to this personal shell!!\n");
     printf("****************************************************************************\n");

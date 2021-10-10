@@ -74,6 +74,11 @@ void sys_commands(char **inside_token, int k)
             //any back process like sleep 1 &
             // again after (or while running) if we run any command whch again uses execvp say agian ls -s
             // the it will give the desired output, but there will be <username@hostname> in betweenn out of nowheere and will be an infinite loop after the desired output for ls -s
+
+            // printf("%d\n", fork_return);
+            foreground_pids[no_of_foregroundprocess] = fork_return;
+            foreground_processes[no_of_foregroundprocess] = inside_token[0];
+            no_of_foregroundprocess++;
             if(fg_pid == 0)
                 fg_pid = fork_return;
             int status;

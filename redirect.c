@@ -74,6 +74,8 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
                 perror("dup2");
                 exit(0);
             }
+
+            close(fd1);
         }
         if ((no_of_redirect_out > 0) || (no_of_redirect_out_append) > 0)
         {
@@ -94,9 +96,11 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
                 perror("dup2");
                 exit(0);
             }
+            close(fd2);
         }
 
         loopy_func_for_args(redir_args[0]);
+        
         exit(0);
 
     }
