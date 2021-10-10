@@ -88,8 +88,10 @@ int take_input()
     inp = (char *)malloc(size_for_inp);
     getline(&inp, &size_for_inp, stdin);
 
-    if ((inp[0] == 'e') && (inp[1] == 'x') && (inp[2] == 'i') && (inp[3] == 't'))
-    {
+    if (((inp[0] == 'e') && (inp[1] == 'x') && (inp[2] == 'i') && (inp[3] == 't'))||((inp[0] == '\0'))) // \0 for ctrl d
+    {   
+        if(inp[0] == '\0')
+            printf("\n");
         return -1;
     }
 

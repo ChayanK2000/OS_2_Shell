@@ -3,8 +3,8 @@ CFLAGS = -c -Wall
 
 all: shell
 
-shell: manage_path.o terminal.o pinfo.o sys_commands.o built_in_comm.o ls.o piping.o redirect.o input.o command.o main.o
-	$(COMPILER) manage_path.o terminal.o pinfo.o sys_commands.o built_in_comm.o ls.o piping.o redirect.o input.o command.o main.o -o shell
+shell: manage_path.o terminal.o pinfo.o sys_commands.o built_in_comm.o ls.o piping.o redirect.o input.o command.o main.o signal_execute.o
+	$(COMPILER) manage_path.o terminal.o pinfo.o sys_commands.o built_in_comm.o ls.o piping.o redirect.o input.o command.o main.o signal_execute.o -o shell
 
 manage_path.o: manage_path.c
 	$(COMPILER) $(CFLAGS) manage_path.c
@@ -39,6 +39,9 @@ command.o: command.c
 
 main.o: main.c
 	$(COMPILER) $(CFLAGS) main.c
+
+signal_execute.o: signal_execute.c
+	$(COMPILER) $(CFLAGS) signal_execute.c
 
 clean:
 	rm *.o shell

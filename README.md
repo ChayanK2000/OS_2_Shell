@@ -48,3 +48,5 @@ Interestingly, adding some other strings before this value correctly prints NULL
 
 6. Whenevr waiting for child, use waitpid with the particluar pid. using wait(NULL) can have drastic consequences as we are recursively forking in some cases and using  wait(NULL) can be disasterous. Details witten in sys_commands.c as comments. - still cat a.txt & not working prperly !! iDK why!!
 EDIT: Even in terminal it behaves wierdly. This consumed hell lot of time for no reason!
+
+7. cat has a total different legacy. giving hell lot of problems. cat & doesnt work properly.

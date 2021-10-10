@@ -1,12 +1,13 @@
 #include "terminal.h"
 #include "input.h"
 #include "main.h"
+#include "signal_execute.h"
 #include <math.h>
 
 int main()
 {
     no_of_backgroundprocess = 0;
-
+    
     cd_count = 0;
     printf("Welcome to this personal shell!!\n");
     printf("****************************************************************************\n");
@@ -21,8 +22,10 @@ int main()
         // printf("HI, the home dir is: %s\n",cur_home);
         // count++;
         // printf("(%d)\n", count);
+        signal(SIGINT, signal_CtrlC);
 
         display_shell_names_dir();
+        fg_pid = 0;
         inp_flag = take_input();
 
         char st[1000] = "/proc/";

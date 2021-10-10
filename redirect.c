@@ -101,7 +101,9 @@ void redirect_func(char *token, int no_of_redirect_inp, int no_of_redirect_out, 
 
     }
     else
-    {
+    {   
+        if(fg_pid == 0)
+            fg_pid = fork_redir;
         int status;
         waitpid(fork_redir, &status, WUNTRACED);
     }
