@@ -15,6 +15,7 @@ char cur_home[1000];
 int len_home;
 int cd_count;
 int background_pids[200];
+int stopped_pids[200];
 char **background_processes;
 int no_of_backgroundprocess;
 int foreground_pids[200];

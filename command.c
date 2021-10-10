@@ -3,6 +3,7 @@
 #include "built_in_comm.h"
 #include "sys_commands.h"
 #include "pinfo.h"
+#include "jobs.h"
 
 void check_for_appropriate_command(char **inside_token, int i)
 {
@@ -41,7 +42,11 @@ void check_for_appropriate_command(char **inside_token, int i)
     {
         apply_pinfo(inside_token, i);
     }
-    
+    else if (strcmp(inside_token[0], "jobs") == 0)
+    {
+        // printf("enfejun\n");
+        apply_jobs(inside_token, i);
+    }
     else
     {
         sys_commands(inside_token, i);

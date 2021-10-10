@@ -90,6 +90,7 @@ void sys_commands(char **inside_token, int k)
             
             printf("%d\n", fork_return);
             background_pids[no_of_backgroundprocess] = fork_return;
+            stopped_pids[no_of_backgroundprocess] = fork_return;
             background_processes[no_of_backgroundprocess] = inside_token_amp[0];
             no_of_backgroundprocess++;
         }

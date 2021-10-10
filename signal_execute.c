@@ -79,6 +79,8 @@ void signal_CtrlZ(int sig_num)
 
         // printf("%d\n", process);
         background_pids[no_of_backgroundprocess] = process;
+        stopped_pids[no_of_backgroundprocess] = process;
+
         int i;
         for (i = 0; i < 200; i++)
         {
