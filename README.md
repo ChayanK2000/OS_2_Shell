@@ -28,7 +28,7 @@ I had implemented a recursive like function(s). So there was no special need to 
 - input.c, input.h is related to taking input from user and directing the commands enetered to command.c for executing them.
 - built_in_comm.c has the commands cd,echo,pwd
 - sys_commands.c - to implement the system commands(via execvp)
-- etc etc
+- and other files.
 - heavily commented the whole code for better understanding.
 - enter "exit" or "CTRL-D" to exit this program
 
@@ -36,7 +36,7 @@ Currently the shell has all features like the ls, pinfo,built-ins: echo,cd,pwd. 
 
 ---
 
-
+<!--
 Notes for personal ref apart from the comments already present:
 
 1. In LINUX shell, on entering "ls -lllll" it works behaving just as ls -l even though -llll is invalid.
@@ -69,6 +69,7 @@ EDIT: it works properly prlly because of setpgid.
 sleep 100 &  
 ->ctrl c(before 100s)  
 ->{this would often lead to exit of the ->background as wel...i was very confused. Then used setpgid on suggestion of friend, and it worked...stil trying to figure it out!}
+-->
 
 
 
